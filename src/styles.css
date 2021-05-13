@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --main-color: #34394f;
+  --gray-2: #f5f6f8;
+  --white: #ffffff;
+  --red-error: #f39a9a;
+  --gray-1: #c4c4c4;
+}
+
+* {
+  -ms-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box; 
+  box-sizing:border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+
+  background-color: #f9f9f9;
+}
+
+p {
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: italic;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--main-color);
+
+  word-break: break-all
+}

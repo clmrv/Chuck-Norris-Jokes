@@ -1,1 +1,25 @@
-<h1>{{title}}</h1>
+<div class="mainBox">
+  <img src="../assets/img/Chuck-Norris-photo.png"
+      srcset="../assets/img/Chuck-Norris-photo@2x.png 2x,
+              ../assets/img/Chuck-Norris-photo@3x.png 3x"
+      
+     >
+  <div class="joke"><p>{{this.joke | json}}</p></div>
+  <select [formControl]="categoryControl">
+    <option value="">Select category</option>
+    <option value="nerdy">Nerdy</option>
+    <option value="explicit">Explicit</option>
+  </select>
+  <input [formControl]="impersonateControl" (change)="onImpersonateChange()" placeholder="Impersonate Chuck Norris" />
+  <app-button type="drawButton" (click)="handleDrawButton()" [text]="drawButtonLabel" style="width: 100%"></app-button>
+  
+  <div style="width:100%; display: flex; justify-content: space-between;">
+    <app-counter 
+      [parentCounter]="counter.formControl" 
+      [onChange]="boundedUpdateSaveButtonState"
+      [range]="counter.range"
+      ></app-counter>
+    <app-button [type]="saveButtonState" text="Save Jokes" (click)="handleSaveButton()" style="width: 100%;"></app-button>
+  </div>
+
+</div>
