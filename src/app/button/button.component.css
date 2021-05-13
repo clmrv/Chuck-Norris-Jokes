@@ -1,0 +1,28 @@
+div {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+  background-color: red;
+}
+div p {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.drawButton {
+  background-color: var(--main-color);
+}
+.drawButton p {
+  color: var(--white);
+  font-weight: 600;
+}
+
+
+.saveButtonOff   {background-color: var(--gray-2);}
+.saveButtonOff p {color: var(--main-color);}
+
+.saveButtonOn   {background-color: var(--main-color);}
+.saveButtonOn p {color: var(--white);}
