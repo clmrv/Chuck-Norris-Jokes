@@ -1,0 +1,13 @@
+<div [class]="counterStatus" >
+  
+  <button [class]="counterStatus" (click)="addValue(-1)">
+    <span>-</span>
+  </button>
+  
+  <input type="number" [class]="counterStatus"  [formControl]="counter" (change)="myOnChange()"/>
+    
+  <button [class]="counterStatus" (click)="addValue(1)" >
+    <span>+</span>
+  </button>
+
+</div>
