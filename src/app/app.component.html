@@ -4,22 +4,36 @@
               ../assets/img/Chuck-Norris-photo@3x.png 3x"
       
      >
-  <div class="joke"><p>{{this.joke | json}}</p></div>
-  <select [formControl]="categoryControl">
+  <div class="joke"><p>{{this.joke}}</p></div>
+  <select class="wide" [formControl]="categoryControl">
     <option value="">Select category</option>
     <option value="nerdy">Nerdy</option>
     <option value="explicit">Explicit</option>
   </select>
-  <input [formControl]="impersonateControl" (change)="onImpersonateChange()" placeholder="Impersonate Chuck Norris" />
-  <app-button type="drawButton" (click)="handleDrawButton()" [text]="drawButtonLabel" style="width: 100%"></app-button>
+
+  <div style="height: 16px"></div>
+
+  <app-input 
+    class="wide"
+    [inputControl]="impersonateControl"
+    [onChange]="boundedOnImpersonateChange" 
+    placeholder="Impersonate Chuck Norris"
+    ></app-input>
   
-  <div style="width:100%; display: flex; justify-content: space-between;">
+  <div style="height: 32px"></div>
+
+  <app-button class="wide" type="drawButton" (click)="handleDrawButton()" [text]="drawButtonLabel"></app-button>
+  
+  <div style="height: 52px"></div>
+
+  <div class="wide" style="display: flex; justify-content: space-between;">
     <app-counter 
       [parentCounter]="counter.formControl" 
       [onChange]="boundedUpdateSaveButtonState"
       [range]="counter.range"
       ></app-counter>
-    <app-button [type]="saveButtonState" text="Save Jokes" (click)="handleSaveButton()" style="width: 100%;"></app-button>
+    <div style="width: 10px"></div>
+    <app-button class="wide" [type]="saveButtonState" text="Save Jokes" (click)="handleSaveButton()" ></app-button>
   </div>
 
 </div>

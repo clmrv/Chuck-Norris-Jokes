@@ -30,6 +30,7 @@ export class AppComponent {
 
   saveButtonState: string
   boundedUpdateSaveButtonState: () => void
+  boundedOnImpersonateChange: () => void
 
 
   constructor(private http: HttpClient) {
@@ -52,6 +53,7 @@ export class AppComponent {
 
     this.saveButtonState = "saveButtonOff"
     this.boundedUpdateSaveButtonState = this.updateSaveButtonState.bind(this)
+    this.boundedOnImpersonateChange = this.onImpersonateChange.bind(this)
 
     this.handleDrawButton()
   }

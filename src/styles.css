@@ -30,16 +30,18 @@ body {
   background-color: #f9f9f9;
 }
 
-p {
-  font-family: Helvetica;
-  font-size: 18px;
-  font-weight: 600;
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(./assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format("truetype");
+}
+
+p, select, input, span, label {
+  font-family: Inter;
+  font-weight: normal;
+  font-size: 16px;
   font-stretch: normal;
-  font-style: italic;
+  font-style: normal;
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: var(--main-color);
-
-  word-break: break-all
 }
