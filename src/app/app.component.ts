@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-//import { ButtonComponent } from './button/button.component'
+
 import { Jokes } from './jokes';
 
 
@@ -18,9 +18,10 @@ export class AppComponent {
     lastName:string
   }
 
-  impersonateControl: FormControl
-  categoryControl: FormControl
+  categories: {value: string, caption: string}[]
+  selectedCategory: string
 
+  impersonateControl: FormControl
   drawButtonLabel: string
 
   counter: {
@@ -31,6 +32,7 @@ export class AppComponent {
   saveButtonState: string
   boundedUpdateSaveButtonState: () => void
   boundedOnImpersonateChange: () => void
+  boundedOnCategoryChange: (selected: string) => void
 
 
   constructor(private http: HttpClient) {
@@ -42,8 +44,18 @@ export class AppComponent {
     }
     
     this.impersonateControl = new FormControl("")
-    this.categoryControl = new FormControl("")
+    this.categories = [
+      {
+        value: "explicit",
+        caption: "Explicit",
+      },
+      {
+        value: "nerdy",
+        caption: "Nerdy",
+      },
+    ]
 
+    this.selectedCategory = ""
     this.drawButtonLabel = this.getDrawButtonLabel()
     
     this.counter = {
@@ -51,15 +63,18 @@ export class AppComponent {
       range: [0,100],
     }
 
+    this.boundedOnCategoryChange = this.onCategoryChange.bind(this)
+    this.boundedOnImpersonateChange = this.onImpersonateChange.bind(this)
     this.saveButtonState = "saveButtonOff"
     this.boundedUpdateSaveButtonState = this.updateSaveButtonState.bind(this)
-    this.boundedOnImpersonateChange = this.onImpersonateChange.bind(this)
+    
 
     this.handleDrawButton()
   }
 
   handleDrawButton() {
-    const url = getIcndbUrl(this.impersonate, this.categoryControl.value)
+
+    const url = getIcndbUrl(this.impersonate, this.selectedCategory)
     this.http.get<Jokes>(url)
     .subscribe((data: Jokes) => {
       this.joke = data.value[0].joke
@@ -67,7 +82,7 @@ export class AppComponent {
   }
 
   downloadJokes(count: number) {
-    const url = getIcndbUrl(this.impersonate, this.categoryControl.value, count)
+    const url = getIcndbUrl(this.impersonate, this.selectedCategory, count)
     this.http.get<Jokes>(url)
     .subscribe((data: Jokes) => {
       let textToSave = ""
@@ -77,6 +92,10 @@ export class AppComponent {
 
       downloadToFile(textToSave, "My jokes", "txt")
     })
+  }
+
+  onCategoryChange(newCategoryValue: string) {
+    this.selectedCategory = newCategoryValue
   }
 
   onImpersonateChange() {
@@ -105,7 +124,7 @@ export class AppComponent {
 
   updateSaveButtonState() {
     const counter = this.counter.formControl.value
-    if (counter > 0 && counter < 100)
+    if (counter > 0 && counter <= 100)
       this.saveButtonState = "saveButtonOn"
     else
       this.saveButtonState = "saveButtonOff"

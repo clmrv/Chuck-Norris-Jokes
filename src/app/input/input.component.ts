@@ -49,6 +49,7 @@ export class InputComponent implements OnInit {
 
 const activeStyles = {
   input: {
+    'border-color': 'var(--main-color)',
     'padding-top': '20px',
   },
   label: {
@@ -59,10 +60,11 @@ const activeStyles = {
 
 const inactiveStyles = {
   input: {
+    'border-color': 'var(--gray-1)',
     'padding-top': '0px',
   },
   label: {
-    'top': '18px',
+    'top': '19px',
     'font-size': '16px'
   },
 }

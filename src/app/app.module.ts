@@ -7,22 +7,28 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { CounterComponent } from './counter/counter.component';
 import { InputComponent } from './input/input.component';
+import { SelectComponent } from './select/select.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
     CounterComponent,
-    InputComponent
+    InputComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [
     HttpClientModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

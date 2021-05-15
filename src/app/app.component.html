@@ -5,11 +5,8 @@
       
      >
   <div class="joke"><p>{{this.joke}}</p></div>
-  <select class="wide" [formControl]="categoryControl">
-    <option value="">Select category</option>
-    <option value="nerdy">Nerdy</option>
-    <option value="explicit">Explicit</option>
-  </select>
+  
+  <app-select class="wide" [onChange]="boundedOnCategoryChange" [items]="categories" [placeholders]="{closed: 'Categories', open: 'Select category'}"></app-select>
 
   <div style="height: 16px"></div>
 
@@ -32,7 +29,9 @@
       [onChange]="boundedUpdateSaveButtonState"
       [range]="counter.range"
       ></app-counter>
+
     <div style="width: 10px"></div>
+    
     <app-button class="wide" [type]="saveButtonState" text="Save Jokes" (click)="handleSaveButton()" ></app-button>
   </div>
 

@@ -1,0 +1,16 @@
+
+  <mat-expansion-panel ngClass="selectPanel" [ngStyle]="styles.panel" [(expanded)]="panelExpanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="placeholder">
+          <span [ngStyle]="styles.title" >{{title}}</span>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <div 
+          class="item" 
+          *ngFor="let item of _items" 
+          (click)="onItemClick(item.value)">
+        <span>{{item.caption}}</span>
+      </div>
+  </mat-expansion-panel>
