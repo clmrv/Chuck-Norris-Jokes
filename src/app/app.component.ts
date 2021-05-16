@@ -22,6 +22,7 @@ export class AppComponent {
   selectedCategory: string
 
   impersonateControl: FormControl
+  impersonateHideLabel: boolean
   drawButtonLabel: string
 
   counter: {
@@ -29,10 +30,18 @@ export class AppComponent {
     range: [number,number],
   }
 
+  /*
+    this.displayInputLabel: boolean
+
+    w inpucie [displayLabel]
+  */
+
   saveButtonState: string
   boundedUpdateSaveButtonState: () => void
   boundedOnImpersonateChange: () => void
   boundedOnCategoryChange: (selected: string) => void
+  boundedOnCategoryOpen: () => void
+  boundedOnCategoryClose: () => void
 
 
   constructor(private http: HttpClient) {
@@ -44,6 +53,7 @@ export class AppComponent {
     }
     
     this.impersonateControl = new FormControl("")
+    this.impersonateHideLabel = false
     this.categories = [
       {
         value: "explicit",
@@ -67,7 +77,8 @@ export class AppComponent {
     this.boundedOnImpersonateChange = this.onImpersonateChange.bind(this)
     this.saveButtonState = "saveButtonOff"
     this.boundedUpdateSaveButtonState = this.updateSaveButtonState.bind(this)
-    
+    this.boundedOnCategoryOpen = this.onCategoryOpen.bind(this)
+    this.boundedOnCategoryClose = this.onCategoryClose.bind(this)
 
     this.handleDrawButton()
   }
@@ -92,6 +103,14 @@ export class AppComponent {
 
       downloadToFile(textToSave, "My jokes", "txt")
     })
+  }
+
+  onCategoryOpen() {
+    this.impersonateHideLabel = true
+  }
+
+  onCategoryClose() {
+    this.impersonateHideLabel = false
   }
 
   onCategoryChange(newCategoryValue: string) {

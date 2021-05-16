@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Form, FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-counter',
@@ -7,22 +7,17 @@ import { Form, FormControl } from '@angular/forms';
   styleUrls: ['./counter.component.css']
 })
 
-export class CounterComponent implements OnInit{
-  @Input() parentCounter?: FormControl
-  @Input() onChange?: () => void
+export class CounterComponent {
+  @Input() counter: FormControl
+  @Input() onChange: () => void
   @Input() range?: [number, number]
   
-  counter: FormControl
   counterStatus: string
   
   constructor() {
     this.counter = new FormControl(0)  
     this.counterStatus = "correct"
-  }
-
-  ngOnInit() {
-    if (this.parentCounter)
-      this.counter = this.parentCounter
+    this.onChange = () => undefined
   }
 
   addValue(value: number) {
@@ -31,12 +26,10 @@ export class CounterComponent implements OnInit{
   }
   
   myOnChange() {
-    if (this.range)
+    if (this.range) {
       this.counterStatus = inRange(this.counter.value, this.range) ? "correct" : "error" 
-
-    if (this.onChange !== undefined) {
-      this.onChange()
     }
+    this.onChange()
   }
 }
 

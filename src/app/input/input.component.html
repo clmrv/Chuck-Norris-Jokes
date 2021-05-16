@@ -1,12 +1,12 @@
 <div class="labelAnchor">
 
-  <label [ngStyle]="styles.label">{{_placeholder}}</label>
+  <label *ngIf="!hidePlaceholder" [ngStyle]="styles.label">{{placeholder}}</label>
 
 </div>
 
 <input 
-  [formControl]="_inputControl" 
-  (ngModelChange)="_onChange()"
+  [formControl]="inputControl" 
+  (ngModelChange)="onChange()"
   [ngStyle]="styles.input" 
   (focus)="onFocus()"
   (focusout)="onFocusOut()" />

@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(./assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format("truetype");
+}
+
 :root {
   --main-color: #34394f;
   --gray-2: #f5f6f8;
@@ -29,11 +35,6 @@ body {
   vertical-align: middle;
 
   background-color: #f9f9f9;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter"), url(./assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format("truetype");
 }
 
 p, select, input, span, label {

@@ -6,7 +6,14 @@
      >
   <div class="joke"><p>{{this.joke}}</p></div>
   
-  <app-select class="wide" [onChange]="boundedOnCategoryChange" [items]="categories" [placeholders]="{closed: 'Categories', open: 'Select category'}"></app-select>
+  <app-select 
+    class="wide" 
+    [onChange]="boundedOnCategoryChange" 
+    [onOpen]="boundedOnCategoryOpen"
+    [onClose]="boundedOnCategoryClose"
+    [items]="categories" 
+    [placeholders]="{closed: 'Categories', open: 'Select category'}"
+    ></app-select>
 
   <div style="height: 16px"></div>
 
@@ -15,6 +22,7 @@
     [inputControl]="impersonateControl"
     [onChange]="boundedOnImpersonateChange" 
     placeholder="Impersonate Chuck Norris"
+    [hidePlaceholder]="impersonateHideLabel"
     ></app-input>
   
   <div style="height: 32px"></div>
@@ -25,7 +33,7 @@
 
   <div class="wide" style="display: flex; justify-content: space-between;">
     <app-counter 
-      [parentCounter]="counter.formControl" 
+      [counter]="counter.formControl" 
       [onChange]="boundedUpdateSaveButtonState"
       [range]="counter.range"
       ></app-counter>

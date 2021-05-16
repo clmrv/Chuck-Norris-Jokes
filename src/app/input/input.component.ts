@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -6,14 +6,11 @@ import { FormControl } from '@angular/forms';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css']
 })
-export class InputComponent implements OnInit {
-  @Input() inputControl?: FormControl
-  @Input() placeholder?: string
-  @Input() onChange?: () => void
-
-  _inputControl: FormControl
-  _placeholder: string
-  _onChange: () => void
+export class InputComponent {
+  @Input() inputControl: FormControl
+  @Input() placeholder: string
+  @Input() onChange: () => void
+  @Input() hidePlaceholder: boolean
 
   styles: {
     label: {},
@@ -22,17 +19,12 @@ export class InputComponent implements OnInit {
 
 
   constructor() {
-    this._inputControl = new FormControl("")
-    this._placeholder = ""
-    this._onChange = () => undefined
+    this.inputControl = new FormControl("")
+    this.placeholder = ""
+    this.onChange = () => undefined
+    this.hidePlaceholder = false
     
     this.styles = inactiveStyles
-  }
-
-  ngOnInit(): void {
-    if (this.inputControl) { this._inputControl = this.inputControl }
-    if (this.placeholder) { this._placeholder = this.placeholder }
-    if (this.onChange) { this._onChange = this.onChange }
   }
 
   onFocus() {
@@ -40,7 +32,7 @@ export class InputComponent implements OnInit {
   }
 
   onFocusOut(){
-    if (this._inputControl.value.length == 0) {
+    if (this.inputControl.value.length == 0) {
       this.styles = inactiveStyles
     }
   }
@@ -65,6 +57,6 @@ const inactiveStyles = {
   },
   label: {
     'top': '19px',
-    'font-size': '16px'
+    'font-size': '16px',
   },
 }

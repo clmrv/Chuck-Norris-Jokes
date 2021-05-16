@@ -10,6 +10,7 @@ import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule,
   ],
   providers: [
     HttpClientModule,

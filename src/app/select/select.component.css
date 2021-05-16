@@ -1,20 +1,11 @@
 .selectPanel {
-  min-height: 100%;
-
+  box-shadow: none;
   border-radius: 6px;
   border: solid 2px var(--gray-1);
   
   background-color: var(--white);
 }
 
-.placeholder {
-  display: flex;
-  align-items: center;
-  height: 56px;
-}
-.placeholder span {
-  color: var(--gray-1)
-}
 
 .item {
   display: flex;
