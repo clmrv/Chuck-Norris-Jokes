@@ -32,3 +32,11 @@ div p {
 
 .saveButtonOn   {background-color: var(--main-color);}
 .saveButtonOn p {color: var(--white);}
+
+
+.drawButton:hover {
+  cursor: pointer;
+}
+.saveButtonOn:hover {
+  cursor: pointer;
+}

@@ -30,6 +30,7 @@
 
 .item:hover {
   background-color: var(--gray-2);
+    cursor: pointer;
 }
 .item:hover span {
   color: var(--main-color);
