@@ -191,13 +191,13 @@ function getLastName(text: string): string {
 
 const bannerUrls = {
   chuck: {
-    src: "../assets/img/Chuck-Norris-photo.png",
-    srcset: `../assets/img/Chuck-Norris-photo@2x.png 2x,
-            ../assets/img/Chuck-Norris-photo@3x.png 3x`
+    src: "assets/img/Chuck-Norris-photo.png",
+    srcset: `assets/img/Chuck-Norris-photo@2x.png 2x,
+            assets/img/Chuck-Norris-photo@3x.png 3x`
   },
   unknown: {
-    src: "../assets/img/Random-photo.png",
-    srcset: `../assets/img/Random-photo@2x.png 2x,
-            ../assets/img/Random-photo@3x.png 3x`
+    src: "assets/img/Random-photo.png",
+    srcset: `assets/img/Random-photo@2x.png 2x,
+            assets/img/Random-photo@3x.png 3x`
   }
 }
