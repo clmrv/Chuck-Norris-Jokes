@@ -157,7 +157,7 @@ function getIcndbUrl(impersonate: {firstName: string, lastName: string}, categor
   let firstName = impersonate.firstName
   let lastName = impersonate.lastName
   
-  let url = `http://api.icndb.com/jokes/random/${count}?escape=javascript&`
+  let url = `https://api.icndb.com/jokes/random/${count}?escape=javascript&`
 
   if (firstName !== "") { url += `firstName=${firstName}&` }
   if (lastName !== "") { url += `lastName=${lastName}&` }
