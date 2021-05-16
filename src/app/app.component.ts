@@ -12,15 +12,14 @@ import { Jokes } from './jokes';
 })
 export class AppComponent {
   title = 'rec-task-chuck-norris';
+  
+  banner: {src: string, srcset: string}
   joke: string
-  impersonate : {
-    firstName:string, 
-    lastName:string
-  }
 
   categories: {value: string, caption: string}[]
   selectedCategory: string
 
+  impersonate : { firstName:string, lastName:string }
   impersonateControl: FormControl
   impersonateHideLabel: boolean
   drawButtonLabel: string
@@ -29,12 +28,6 @@ export class AppComponent {
     formControl: FormControl,
     range: [number,number],
   }
-
-  /*
-    this.displayInputLabel: boolean
-
-    w inpucie [displayLabel]
-  */
 
   saveButtonState: string
   boundedUpdateSaveButtonState: () => void
@@ -45,13 +38,13 @@ export class AppComponent {
 
 
   constructor(private http: HttpClient) {
+    this.banner = bannerUrls.chuck
     this.joke = "Loading..."
     
     this.impersonate = {
       firstName: "",
       lastName: "",
     }
-    
     this.impersonateControl = new FormControl("")
     this.impersonateHideLabel = false
     this.categories = [
@@ -121,6 +114,7 @@ export class AppComponent {
     this.impersonate.firstName = getFirstName(this.impersonateControl.value)
     this.impersonate.lastName = getLastName(this.impersonateControl.value)
     this.drawButtonLabel = this.getDrawButtonLabel()
+    this.banner = (this.impersonate.firstName) ? bannerUrls.unknown : bannerUrls.chuck
   }
 
   handleSaveButton() {
@@ -193,4 +187,17 @@ function getLastName(text: string): string {
   }
   const lastName = trimmed.substr(space, trimmed.length)
   return lastName.trim()
+}
+
+const bannerUrls = {
+  chuck: {
+    src: "../assets/img/Chuck-Norris-photo.png",
+    srcset: `../assets/img/Chuck-Norris-photo@2x.png 2x,
+            ../assets/img/Chuck-Norris-photo@3x.png 3x`
+  },
+  unknown: {
+    src: "../assets/img/Random-photo.png",
+    srcset: `../assets/img/Random-photo@2x.png 2x,
+            ../assets/img/Random-photo@3x.png 3x`
+  }
 }

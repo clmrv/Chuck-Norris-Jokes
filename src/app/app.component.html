@@ -1,10 +1,9 @@
 <div class="mainBox">
-  <img src="../assets/img/Chuck-Norris-photo.png"
-      srcset="../assets/img/Chuck-Norris-photo@2x.png 2x,
-              ../assets/img/Chuck-Norris-photo@3x.png 3x"
-      
-     >
-  <div class="joke"><p>{{this.joke}}</p></div>
+  
+  <div>
+    <img [src]="banner.src" [srcset]="banner.srcset">
+    <div class="joke"><p>{{this.joke}}</p></div>
+  </div>
   
   <app-select 
     class="wide" 
@@ -15,8 +14,6 @@
     [placeholders]="{closed: 'Categories', open: 'Select category'}"
     ></app-select>
 
-  <div style="height: 16px"></div>
-
   <app-input 
     class="wide"
     [inputControl]="impersonateControl"
@@ -25,11 +22,11 @@
     [hidePlaceholder]="impersonateHideLabel"
     ></app-input>
   
-  <div style="height: 32px"></div>
+  <div class="spacer"></div>
 
   <app-button class="wide" type="drawButton" (click)="handleDrawButton()" [text]="drawButtonLabel"></app-button>
   
-  <div style="height: 52px"></div>
+  <div class="spacer"></div>
 
   <div class="wide" style="display: flex; justify-content: space-between;">
     <app-counter 
